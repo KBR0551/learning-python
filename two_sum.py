@@ -31,6 +31,22 @@ def two_sum_dict_idx(x,k):
     print(dict)
     return ([-1,-1])
 
+@timer
+def two_sum_sort_idx(x,k):
+    x.sort(reverse=True)
+    i=0
+    j=len(x)-1
+    while i<j:
+        sum=x[i]+x[j]
+        if x[i]+x[j]==k:
+            return([i,j])
+        elif sum>k:
+            i+=1
+        else:
+            j-=1
+    return ([-1,-1])
+
+
 x=[0]*10000
 x[len(x)-1]=2
 x[len(x)-2]=3
@@ -38,8 +54,15 @@ k=5
 
 print(two_sum_index(x,k)) # using two for loops
 print(two_sum_dict_idx(x,k)) #using hashmap 
+print(two_sum_sort_idx(x,k)) #using sort and two pointer
 
-#Execution time of two_sum_index: 1.7059 seconds
+#execution times to understand time complexity 
+
+#Execution time of two_sum_index: 1.5926 seconds
 #[9998, 9999]
-#Execution time of two_sum_dict_idx: 0.0005 seconds
+#Execution time of two_sum_dict_idx: 0.0004 seconds
 #[9998, 9999]
+#Execution time of two_sum_sort_idx: 0.0007 seconds : if the list is already a sorted list it will still try to sort the list which will make it slower compared to other two mentods 
+#[9998, 9999]
+
+
