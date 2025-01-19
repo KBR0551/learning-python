@@ -25,17 +25,18 @@ def sort_zeros_ones_tows(x): #o(n)+0(n)
 
 @timer
 #Dutch National flag algorithm
+@timer
 def sort_zeros_ones_tows_using_three_pointers(x):  # storting is done in single iteration o(n)
     low,mid=0,0
     high=len(x)-1
-    while mid>high:
+    while mid<=high:
         if x[mid]==0:
             x[mid],x[low]=x[low],x[mid]
             mid+=1
             low+=1
-        if x[mid]==1:
+        elif x[mid]==1:
             mid+=1
-        if x[mid]==2: 
+        else:
             x[mid],x[high]=x[high],x[mid]
             high-=1
     return x
